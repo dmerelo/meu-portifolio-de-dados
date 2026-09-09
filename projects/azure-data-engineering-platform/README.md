@@ -120,3 +120,5 @@ azure-data-engineering-platform/
 ## Portfolio note
 
 This is a **reference / hands-on portfolio architecture**. My strongest production experience is with AWS, Python and SQL; this project demonstrates how the same Data Engineering principles map to Azure services.
+
+For the main production-inspired implementation with executable incremental logic, watermarking, idempotency, tests, observability and recovery patterns, see the **[AWS Incremental Data Pipeline flagship](../aws-incremental-data-pipeline/)**.
