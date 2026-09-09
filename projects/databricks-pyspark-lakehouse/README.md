@@ -79,3 +79,7 @@ For an AWS-focused engineer, this architecture can be mapped conceptually to:
 - CloudWatch for monitoring
 
 The core engineering principles remain the same: incremental processing, partitioning, data quality, lineage and reliable reprocessing.
+
+## Portfolio context
+
+This project is a hands-on extension of principles I use in AWS-oriented Data Engineering. For the main production-inspired case with executable incremental logic, watermarking, idempotency, tests and operational recovery, see the **[AWS Incremental Data Pipeline flagship](../aws-incremental-data-pipeline/)**.
