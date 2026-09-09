@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: Business-ready incremental order fact table.
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+      - name: order_amount
+        tests:
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['PENDING', 'PAID', 'CANCELLED', 'REFUNDED']
