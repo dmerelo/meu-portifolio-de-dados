@@ -33,8 +33,10 @@ The flagship is the closest public representation of the type of problem I have 
 It includes:
 - synthetic reproducible dataset;
 - executable Python incremental pipeline;
-- watermark lifecycle;
-- idempotent merge/upsert behavior;
+- input validation and blocking data-quality rules;
+- explicit watermark lifecycle;
+- deterministic deduplication and idempotent merge/upsert behavior;
+- execution metrics;
 - automated tests;
 - before-vs-after design analysis;
 - operational runbook;
@@ -42,6 +44,19 @@ It includes:
 - architecture and trade-off documentation.
 
 [Open the flagship project](./projects/aws-incremental-data-pipeline/)
+
+## Code quality and repository standards
+
+The repository includes engineering controls beyond example code:
+
+- **pytest** for automated validation;
+- **Ruff** for Python linting and formatting checks;
+- **GitHub Actions CI** on pushes and pull requests to `main`;
+- project-level Python configuration in `pyproject.toml`;
+- `.gitignore` for generated data, local environments and development artifacts;
+- deterministic outputs where practical to make reruns and tests predictable.
+
+The flagship test suite covers incremental selection, deduplication, idempotent replay, watermark behavior and blocking input-quality failures.
 
 ## Core production stack
 
