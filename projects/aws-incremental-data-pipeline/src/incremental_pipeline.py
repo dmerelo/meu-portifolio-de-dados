@@ -78,7 +78,8 @@ def select_incremental(rows: Iterable[RowLike], watermark: str) -> list[Row]:
 
 
 def merge_rows(
-    current_rows: Iterable[RowLike], incoming_rows: Iterable[RowLike]
+    current_rows: Iterable[RowLike],
+    incoming_rows: Iterable[RowLike],
 ) -> list[Row]:
     current = validate_rows(current_rows)
     incoming = validate_rows(incoming_rows)
