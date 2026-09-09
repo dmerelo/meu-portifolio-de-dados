@@ -1,0 +1,19 @@
+name: 'snowflake_dbt_analytics_engineering'
+version: '1.0.0'
+config-version: 2
+
+profile: 'snowflake_dbt_analytics_engineering'
+
+model-paths: ['models']
+snapshot-paths: ['snapshots']
+test-paths: ['tests']
+macro-paths: ['macros']
+
+models:
+  snowflake_dbt_analytics_engineering:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: ephemeral
+    marts:
+      +materialized: table
