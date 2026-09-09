@@ -35,9 +35,9 @@ jobs:
           ruff check projects/aws-incremental-data-pipeline/src/incremental_pipeline.py \
             projects/aws-incremental-data-pipeline/tests/test_incremental_pipeline.py
 
-      - name: Check flagship formatting
+      - name: Show flagship formatting diff
         run: |
-          ruff format --check projects/aws-incremental-data-pipeline/src/incremental_pipeline.py \
+          ruff format --diff projects/aws-incremental-data-pipeline/src/incremental_pipeline.py \
             projects/aws-incremental-data-pipeline/tests/test_incremental_pipeline.py
 
       - name: Run tests
