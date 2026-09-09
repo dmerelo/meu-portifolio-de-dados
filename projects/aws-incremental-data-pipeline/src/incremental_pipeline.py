@@ -77,7 +77,9 @@ def select_incremental(rows: Iterable[RowLike], watermark: str) -> list[Row]:
     return sorted(latest_by_key.values(), key=lambda row: row["customer_id"])
 
 
-def merge_rows(current_rows: Iterable[RowLike], incoming_rows: Iterable[RowLike]) -> list[Row]:
+def merge_rows(
+    current_rows: Iterable[RowLike], incoming_rows: Iterable[RowLike]
+) -> list[Row]:
     current = validate_rows(current_rows)
     incoming = validate_rows(incoming_rows)
     target: dict[str, Row] = {row["customer_id"]: row for row in current}
