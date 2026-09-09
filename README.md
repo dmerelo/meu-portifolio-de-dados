@@ -1,163 +1,84 @@
 # Data Engineering Portfolio — Douglas Merelo
 
+[![CI](https://github.com/dmerelo/meu-portifolio-de-dados/actions/workflows/ci.yml/badge.svg)](https://github.com/dmerelo/meu-portifolio-de-dados/actions/workflows/ci.yml)
+
 Portfolio focused on **Data Engineering, AWS, Python, SQL, ETL/ELT, data pipelines, performance and cloud architecture**.
 
-This repository is organized to demonstrate how I approach real Data Engineering problems: ingestion, transformation, incremental processing, data quality, observability, modeling, performance, security and cost optimization.
-
-> My strongest production experience is with **AWS, Python and SQL**. Projects involving technologies such as Spark, Databricks, Snowflake, dbt and Azure are identified as hands-on/reference labs when applicable.
-
-## Professional focus
-
-- Data Engineering on AWS
-- ETL/ELT and data pipelines
-- Incremental processing and reprocessing strategies
-- SQL performance and data modeling
-- Data integration and APIs
-- Production troubleshooting and observability
-- Cloud cost and processing optimization
-
-## Core stack
-
-**Cloud:** AWS S3, Glue, Athena, Lambda, Aurora PostgreSQL, DynamoDB, ECS, EC2, API Gateway, EventBridge, CloudWatch, IAM, Secrets Manager  
-**Languages:** Python, SQL, Shell Script  
-**Databases:** PostgreSQL, Aurora PostgreSQL, Oracle, SQL Server, MySQL, DynamoDB  
-**Engineering:** Git, Docker, CI/CD, REST APIs, Data Modeling, ETL/ELT  
-**Analytics:** Amazon QuickSight
+My strongest production experience is with **AWS, Python and SQL**. Projects involving Spark, Databricks, Snowflake, dbt and Azure are clearly identified as hands-on/reference labs rather than previous production experience.
 
 ## Selected professional impact
 
-In a national-scale telecom data environment, I contributed to the evolution of a daily **full-load architecture to incremental processing**.
+- Contributed to the evolution of a national-scale telecom data platform from daily **full-load processing to incremental processing**.
+- Reduced reprocessing, execution time, AWS resource consumption and cloud cost by approximately **60%**.
+- Supported and evolved approximately **20 production data pipelines** in a critical environment processing millions of records.
 
-The previous approach reprocessed a large historical volume every day, resulting in long-running jobs and unnecessary cloud resource usage. The evolution to incremental processing reduced reprocessing, execution time and AWS resource consumption, with an observed reduction of approximately **60%** when comparing processing time, resource consumption and cloud cost before and after the change.
+> Proprietary code, datasets and internal architecture are not exposed. Public examples are sanitized or recreated as reference architectures.
 
-The environment included approximately **20 production data pipelines** and processed millions of records.
+## Project map
 
-> The portfolio does not expose proprietary code, datasets or internal architecture. Public examples are sanitized or recreated as reference architectures.
+| Project | Stack / Concepts | What it demonstrates |
+|---|---|---|
+| [AWS Incremental Data Pipeline](./projects/aws-incremental-data-pipeline/) | AWS, Python, SQL, incremental, watermark, idempotency | **Flagship** — architecture, reprocessing, data quality, observability, performance and cloud cost |
+| [AWS Redshift + DMS Modernization](./projects/aws-redshift-dms-modernization/) | Redshift, DMS, CDC, S3, SQL | Full load + CDC, OLTP → OLAP separation, migration validation and cutover thinking |
+| [Databricks + PySpark Lakehouse](./projects/databricks-pyspark-lakehouse/) | PySpark, Delta concepts, Medallion | Bronze/Silver/Gold, deduplication, incremental processing, Spark performance and CI |
+| [Snowflake + dbt Analytics Engineering](./projects/snowflake-dbt-analytics-engineering/) | Snowflake, dbt, SQL | Staging/intermediate/marts, tests, snapshots, incremental models and lineage-oriented structure |
+| [Azure Data Engineering Platform](./projects/azure-data-engineering-platform/) | ADF, ADLS Gen2, Databricks, Key Vault | Transfer of core Data Engineering principles from AWS to Azure |
 
-## Production-inspired flagship project
+## Production-inspired flagship
 
 ### AWS Incremental Data Pipeline
 
-This is the main project in the portfolio because it is the closest to the type of problem I have handled in production: evolving a costly full-load pattern into a more efficient incremental architecture.
+The flagship is the closest public representation of the type of problem I have handled in production: evolving an expensive full-load pattern into a more efficient incremental architecture.
 
-It focuses on the engineering decisions behind:
-- watermark strategy
-- idempotency
-- partitioning
-- upsert / merge logic
-- data quality
-- observability
-- predictable reprocessing
-- performance and cost optimization
+It includes:
+- synthetic reproducible dataset;
+- executable Python incremental pipeline;
+- watermark lifecycle;
+- idempotent merge/upsert behavior;
+- automated tests;
+- before-vs-after design analysis;
+- operational runbook;
+- failure and reprocessing strategy;
+- architecture and trade-off documentation.
 
-[View flagship project](./projects/aws-incremental-data-pipeline/)
+[Open the flagship project](./projects/aws-incremental-data-pipeline/)
 
-## AWS-focused hands-on project
+## Core production stack
 
-### AWS Redshift + DMS Modernization
+**AWS:** S3, Glue, Athena, Lambda, Aurora PostgreSQL, DynamoDB, ECS, EC2, API Gateway, EventBridge, CloudWatch, IAM, Secrets Manager  
+**Languages:** Python, SQL, Shell Script  
+**Databases:** PostgreSQL, Aurora PostgreSQL, Oracle, SQL Server, MySQL, DynamoDB  
+**Engineering:** ETL/ELT, Data Pipelines, Data Modeling, REST APIs, Docker, Git, CI/CD, monitoring and troubleshooting
 
-Hands-on/reference project focused on analytical migration and replication patterns that extend naturally from my AWS background.
-
-Covers:
-- DMS full load + CDC
-- OLTP to OLAP separation
-- Redshift-oriented analytical modeling
-- migration validation
-- data quality
-- cutover and rollback thinking
-
-[View project](./projects/aws-redshift-dms-modernization/)
-
-## Hands-on labs
-
-The projects below are designed to deepen practical knowledge in modern Data Engineering stacks. They are portfolio labs and are not presented as prior production experience.
-
-### Databricks + PySpark Lakehouse
-
-Hands-on Lakehouse lab using Spark and Medallion architecture concepts.
-
-Covers:
-- Bronze / Silver / Gold
-- PySpark transformations
-- deduplication
-- incremental processing
-- MERGE / upsert
-- Spark performance
-- data quality
-- automated tests and CI
-
-[View lab](./projects/databricks-pyspark-lakehouse/)
-
-### Snowflake + dbt Analytics Engineering
-
-Hands-on lab for modern analytical transformation and modeling.
-
-Covers:
-- Snowflake data layers
-- dbt sources and models
-- staging / intermediate / marts
-- tests
-- snapshots
-- incremental models
-- lineage-oriented project structure
-
-[View lab](./projects/snowflake-dbt-analytics-engineering/)
-
-### Azure Data Engineering Platform
-
-Hands-on architecture lab mapping core Data Engineering principles to Azure.
-
-Covers:
-- Azure Data Factory
-- ADLS Gen2
-- Azure Databricks / PySpark
-- incremental ingestion
-- Medallion layers
-- Key Vault
-- Entra ID concepts
-- observability and data quality
-- Azure ↔ AWS architectural analogies
-
-[View lab](./projects/azure-data-engineering-platform/)
-
-## Supporting code
-
-### Python Data Transformation
-
-Existing Python transformation code for CSV data preparation using pandas and logging.
-
-[View source](./src/data_processing/tratar_fonte.py)
-
-## Engineering principles demonstrated
+## Engineering principles
 
 - Process only what changed when possible
 - Design pipelines to be idempotent
 - Separate ingestion, transformation and consumption responsibilities
 - Make reprocessing predictable
+- Validate data before publication
+- Monitor failures, latency, freshness and processing volume
 - Optimize data layout before scaling compute
-- Monitor failures, latency, data freshness and processing volume
 - Treat cost as an architectural metric
-- Prefer explicit data contracts and quality checks
 - Apply least privilege and avoid hard-coded credentials
 - Document trade-offs instead of treating tools as interchangeable
 
-## Current technical roadmap
+## Hands-on expansion
 
-I am deepening hands-on knowledge in:
+Current practical study focuses on:
 
-- Advanced SQL and database tuning
-- Amazon Redshift
-- AWS DMS and CDC
-- Spark / PySpark
-- Databricks / Delta Lake / Medallion Architecture
-- Snowflake
-- dbt
-- Azure Data Engineering
+`Advanced SQL` · `Redshift` · `AWS DMS / CDC` · `Spark / PySpark` · `Databricks / Delta Lake` · `Snowflake` · `dbt` · `Azure Data Engineering`
 
-## About me
+## Supporting / historical work
+
+- [Python CSV Transformation](./src/data_processing/tratar_fonte.py)
+- [Jupyter study archive](https://github.com/dmerelo/Project_Jupyter_Notebooks)
+- [Portfolio website](https://dmerelo.github.io/)
+
+## About
 
 **Douglas Merelo**  
 Senior Data Engineer | AWS | Python | SQL | ETL/ELT | Data Pipelines | Cloud Architecture
 
-- LinkedIn: https://www.linkedin.com/in/douglas-merelo/
-- GitHub: https://github.com/dmerelo
+- [LinkedIn](https://www.linkedin.com/in/douglas-merelo/)
+- [GitHub](https://github.com/dmerelo)
