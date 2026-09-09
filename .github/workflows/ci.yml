@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  quality:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,6 +29,16 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
+
+      - name: Lint flagship code
+        run: |
+          ruff check projects/aws-incremental-data-pipeline/src/incremental_pipeline.py \
+            projects/aws-incremental-data-pipeline/tests/test_incremental_pipeline.py
+
+      - name: Check flagship formatting
+        run: |
+          ruff format --check projects/aws-incremental-data-pipeline/src/incremental_pipeline.py \
+            projects/aws-incremental-data-pipeline/tests/test_incremental_pipeline.py
 
       - name: Run tests
         run: pytest -q
