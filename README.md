@@ -63,12 +63,6 @@ It includes:
 - Apply least privilege and avoid hard-coded credentials
 - Document trade-offs instead of treating tools as interchangeable
 
-## Interview preparation
-
-I keep a technical defense guide for the portfolio with the concepts, trade-offs and questions I should be able to explain in an interview.
-
-[Open the interview defense guide](./docs/interview-defense-guide.md)
-
 ## Hands-on expansion
 
 Current practical study focuses on:
