@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: raw
+    database: ANALYTICS
+    schema: RAW
+    tables:
+      - name: orders
+        columns:
+          - name: order_id
+            tests:
+              - not_null
+          - name: customer_id
+            tests:
+              - not_null
