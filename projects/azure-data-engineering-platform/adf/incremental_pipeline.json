@@ -1,0 +1,38 @@
+{
+  "name": "incremental_ingestion_reference",
+  "description": "Reference-only ADF-style configuration showing a watermark-based incremental ingestion flow.",
+  "parameters": {
+    "source_table": "orders",
+    "watermark_column": "updated_at"
+  },
+  "activities": [
+    {
+      "name": "LookupLastWatermark",
+      "type": "Lookup",
+      "purpose": "Read the last successfully committed watermark from pipeline metadata"
+    },
+    {
+      "name": "CopyIncrementalRows",
+      "type": "Copy",
+      "dependsOn": ["LookupLastWatermark"],
+      "source_query_template": "SELECT * FROM orders WHERE updated_at > :last_watermark AND updated_at <= :current_watermark",
+      "sink": "abfss://raw@storageaccount.dfs.core.windows.net/orders/"
+    },
+    {
+      "name": "ValidateRowCounts",
+      "type": "Validation",
+      "dependsOn": ["CopyIncrementalRows"],
+      "purpose": "Compare expected and landed row counts before committing the checkpoint"
+    },
+    {
+      "name": "CommitWatermark",
+      "type": "StoredProcedure",
+      "dependsOn": ["ValidateRowCounts"],
+      "purpose": "Advance the watermark only after all ingestion checks succeed"
+    }
+  ],
+  "notes": [
+    "This file is a portfolio reference and is not intended to be imported directly into ADF.",
+    "Secrets and connection strings must be resolved through Key Vault or managed identity rather than embedded in source control."
+  ]
+}
