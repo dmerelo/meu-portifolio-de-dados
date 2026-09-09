@@ -96,3 +96,7 @@ Track at least:
 - Separation of OLTP and OLAP workloads
 - Redshift-oriented analytical modeling
 - Data quality, observability and operational thinking
+
+## Portfolio context
+
+This lab extends the AWS concepts used in my main portfolio case. For the strongest production-inspired example — including executable incremental logic, idempotency, watermark handling, tests, observability and reprocessing — see the **[AWS Incremental Data Pipeline flagship](../aws-incremental-data-pipeline/)**.
