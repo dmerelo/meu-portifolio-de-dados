@@ -100,3 +100,7 @@ packages.yml
 ## Why this project matters
 
 This project demonstrates the shift from pipeline-centric Data Engineering to analytics engineering, where transformation logic becomes modular, versioned, tested and easier to maintain.
+
+## Portfolio context
+
+This is a hands-on lab for Snowflake and dbt. My main production-inspired portfolio case remains the **[AWS Incremental Data Pipeline flagship](../aws-incremental-data-pipeline/)**, which demonstrates the underlying engineering principles in greater depth: incremental processing, idempotency, watermarking, testing, observability and controlled reprocessing.
