@@ -1,10 +1,10 @@
 from __future__ import annotations
 
+import csv
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Iterable, Mapping, TypeAlias
-import csv
 
 Row: TypeAlias = dict[str, str]
 RowLike: TypeAlias = Mapping[str, str]
