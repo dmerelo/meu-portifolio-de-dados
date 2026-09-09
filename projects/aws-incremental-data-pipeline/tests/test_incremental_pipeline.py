@@ -18,9 +18,21 @@ select_incremental = module.select_incremental
 
 def test_selects_only_rows_newer_than_watermark_and_deduplicates():
     rows = [
-        {"customer_id": "1", "updated_at": "2026-09-07T10:00:00+00:00", "amount": "100"},
-        {"customer_id": "1", "updated_at": "2026-09-07T11:00:00+00:00", "amount": "120"},
-        {"customer_id": "2", "updated_at": "2026-09-05T11:00:00+00:00", "amount": "50"},
+        {
+            "customer_id": "1",
+            "updated_at": "2026-09-07T10:00:00+00:00",
+            "amount": "100",
+        },
+        {
+            "customer_id": "1",
+            "updated_at": "2026-09-07T11:00:00+00:00",
+            "amount": "120",
+        },
+        {
+            "customer_id": "2",
+            "updated_at": "2026-09-05T11:00:00+00:00",
+            "amount": "50",
+        },
     ]
 
     result = select_incremental(rows, "2026-09-06T00:00:00+00:00")
@@ -32,10 +44,18 @@ def test_selects_only_rows_newer_than_watermark_and_deduplicates():
 
 def test_merge_is_idempotent_for_same_batch():
     target = [
-        {"customer_id": "1", "updated_at": "2026-09-07T09:00:00+00:00", "amount": "100"}
+        {
+            "customer_id": "1",
+            "updated_at": "2026-09-07T09:00:00+00:00",
+            "amount": "100",
+        }
     ]
     incoming = [
-        {"customer_id": "1", "updated_at": "2026-09-07T10:00:00+00:00", "amount": "120"}
+        {
+            "customer_id": "1",
+            "updated_at": "2026-09-07T10:00:00+00:00",
+            "amount": "120",
+        }
     ]
 
     first = merge_rows(target, incoming)
@@ -48,8 +68,16 @@ def test_merge_is_idempotent_for_same_batch():
 
 def test_watermark_advances_only_to_latest_processed_change():
     source = [
-        {"customer_id": "1", "updated_at": "2026-09-07T10:00:00+00:00", "amount": "100"},
-        {"customer_id": "2", "updated_at": "2026-09-07T12:30:00+00:00", "amount": "200"},
+        {
+            "customer_id": "1",
+            "updated_at": "2026-09-07T10:00:00+00:00",
+            "amount": "100",
+        },
+        {
+            "customer_id": "2",
+            "updated_at": "2026-09-07T12:30:00+00:00",
+            "amount": "200",
+        },
     ]
 
     merged, metrics = execute(source, [], "2026-09-06T00:00:00+00:00")
@@ -65,7 +93,11 @@ def test_watermark_advances_only_to_latest_processed_change():
 def test_watermark_does_not_advance_when_no_new_rows_exist():
     watermark = "2026-09-08T00:00:00+00:00"
     source = [
-        {"customer_id": "1", "updated_at": "2026-09-07T10:00:00+00:00", "amount": "100"}
+        {
+            "customer_id": "1",
+            "updated_at": "2026-09-07T10:00:00+00:00",
+            "amount": "100",
+        }
     ]
 
     _, metrics = execute(source, [], watermark)
@@ -77,7 +109,11 @@ def test_watermark_does_not_advance_when_no_new_rows_exist():
 
 def test_rejects_empty_business_key():
     rows = [
-        {"customer_id": "", "updated_at": "2026-09-07T10:00:00+00:00", "amount": "100"}
+        {
+            "customer_id": "",
+            "updated_at": "2026-09-07T10:00:00+00:00",
+            "amount": "100",
+        }
     ]
 
     with pytest.raises(DataQualityError, match="empty customer_id"):
