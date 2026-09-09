@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local generated data and outputs
+projects/aws-incremental-data-pipeline/data/*.csv
+*.log
+
+# Environment files
+.env
+.env.*
