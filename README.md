@@ -4,7 +4,7 @@ Portfolio focused on **Data Engineering, AWS, Python, SQL, ETL/ELT, data pipelin
 
 This repository is organized to demonstrate how I approach real Data Engineering problems: ingestion, transformation, incremental processing, data quality, observability, modeling, performance, security and cost optimization.
 
-> My strongest production experience is with **AWS, Python and SQL**. Projects involving technologies such as Spark, Databricks, Snowflake, dbt and Azure are identified as study/lab/reference projects when applicable.
+> My strongest production experience is with **AWS, Python and SQL**. Projects involving technologies such as Spark, Databricks, Snowflake, dbt and Azure are identified as hands-on/reference labs when applicable.
 
 ## Professional focus
 
@@ -34,27 +34,29 @@ The environment included approximately **20 production data pipelines** and proc
 
 > The portfolio does not expose proprietary code, datasets or internal architecture. Public examples are sanitized or recreated as reference architectures.
 
-## Featured projects
+## Production-inspired flagship project
 
-### 1. AWS Incremental Data Pipeline
+### AWS Incremental Data Pipeline
 
-Reference architecture focused on moving from daily full-load processing to an incremental model.
+This is the main project in the portfolio because it is the closest to the type of problem I have handled in production: evolving a costly full-load pattern into a more efficient incremental architecture.
 
-Covers:
+It focuses on the engineering decisions behind:
 - watermark strategy
 - idempotency
 - partitioning
-- upsert / merge
+- upsert / merge logic
 - data quality
 - observability
-- reprocessing
-- performance and cost
+- predictable reprocessing
+- performance and cost optimization
 
-[View project](./projects/aws-incremental-data-pipeline/)
+[View flagship project](./projects/aws-incremental-data-pipeline/)
 
-### 2. AWS Redshift + DMS Modernization
+## AWS-focused hands-on project
 
-Hands-on/reference project focused on analytical migration and replication patterns.
+### AWS Redshift + DMS Modernization
+
+Hands-on/reference project focused on analytical migration and replication patterns that extend naturally from my AWS background.
 
 Covers:
 - DMS full load + CDC
@@ -66,9 +68,13 @@ Covers:
 
 [View project](./projects/aws-redshift-dms-modernization/)
 
-### 3. Databricks + PySpark Lakehouse
+## Hands-on labs
 
-Hands-on/reference Lakehouse project using Spark and Medallion architecture concepts.
+The projects below are designed to deepen practical knowledge in modern Data Engineering stacks. They are portfolio labs and are not presented as prior production experience.
+
+### Databricks + PySpark Lakehouse
+
+Hands-on Lakehouse lab using Spark and Medallion architecture concepts.
 
 Covers:
 - Bronze / Silver / Gold
@@ -80,11 +86,11 @@ Covers:
 - data quality
 - automated tests and CI
 
-[View project](./projects/databricks-pyspark-lakehouse/)
+[View lab](./projects/databricks-pyspark-lakehouse/)
 
-### 4. Snowflake + dbt Analytics Engineering
+### Snowflake + dbt Analytics Engineering
 
-Hands-on/reference project for modern analytical transformation and modeling.
+Hands-on lab for modern analytical transformation and modeling.
 
 Covers:
 - Snowflake data layers
@@ -95,11 +101,11 @@ Covers:
 - incremental models
 - lineage-oriented project structure
 
-[View project](./projects/snowflake-dbt-analytics-engineering/)
+[View lab](./projects/snowflake-dbt-analytics-engineering/)
 
-### 5. Azure Data Engineering Platform
+### Azure Data Engineering Platform
 
-Hands-on/reference architecture mapping core Data Engineering principles to Azure.
+Hands-on architecture lab mapping core Data Engineering principles to Azure.
 
 Covers:
 - Azure Data Factory
@@ -112,9 +118,11 @@ Covers:
 - observability and data quality
 - Azure ↔ AWS architectural analogies
 
-[View project](./projects/azure-data-engineering-platform/)
+[View lab](./projects/azure-data-engineering-platform/)
 
-### 6. Python Data Transformation
+## Supporting code
+
+### Python Data Transformation
 
 Existing Python transformation code for CSV data preparation using pandas and logging.
 
