@@ -41,9 +41,7 @@ def validate_rows(rows: Iterable[RowLike]) -> list[Row]:
         row = dict(source_row)
         missing = REQUIRED_COLUMNS - row.keys()
         if missing:
-            raise DataQualityError(
-                f"Row {index} is missing required columns: {sorted(missing)}"
-            )
+            raise DataQualityError(f"Row {index} is missing required columns: {sorted(missing)}")
 
         if not row["customer_id"].strip():
             raise DataQualityError(f"Row {index} has an empty customer_id")
