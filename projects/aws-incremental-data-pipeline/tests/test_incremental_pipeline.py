@@ -1,9 +1,11 @@
 import importlib.util
 from pathlib import Path
+import sys
 
 MODULE_PATH = Path(__file__).resolve().parents[1] / "src" / "incremental_pipeline.py"
 spec = importlib.util.spec_from_file_location("incremental_pipeline", MODULE_PATH)
 module = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = module
 spec.loader.exec_module(module)
 
 select_incremental = module.select_incremental
